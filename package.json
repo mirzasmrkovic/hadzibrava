@@ -15,7 +15,7 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "start": "nodemon -r esm server/server.js",
-    "production": "node -r esm server/server.js"
+    "dev": "nodemon -r esm server/server.js",
+    "start": "node -r esm server/server.js"
   }
 }
