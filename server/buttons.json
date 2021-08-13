@@ -1,0 +1,25 @@
+{
+  "buttons": [
+    {
+      "imgPath": "fes",
+      "titleText": "Otklučaj Hadzi-Bravu",
+      "descText": "Otvara interfon i ulazna vrata",
+      "btnID": "open-door",
+      "path": "/door/open"
+    },
+    {
+      "imgPath": "close",
+      "titleText": "Zaključaj Hadzi-Bravu",
+      "descText": "Zaključava ulazna vrata",
+      "btnID": "close-door",
+      "path": "/door/close"
+    },
+    {
+      "imgPath": "interfon",
+      "titleText": "Otvori Hadzi-Interfon",
+      "descText": "Otvara samo interfon",
+      "btnID": "open-intercom",
+      "path": "/intercom/open"
+    }
+  ]
+}

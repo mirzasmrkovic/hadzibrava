@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.links {
+  transition: .3s;
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto;
+  margin: 10px;
+  padding: 20px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  outline: none;
+}
+
+/**
+  Important chronology
+**/
+.links:hover {
+  transform: scale(0.99);
+}
+.links:focus {
+  transform: scale(0.98);
+}
+/**
+  End of important chronology
+**/
+#open-door {
+  background-color: #00BED4;
+}
+#close-door {
+  background-color: #FD7452;
+}
+#open-intercom {
+  background-color: #7140AD;
+}
+
+span.info-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.info-display h3 {
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0px;
+}
+
+.info-display p {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.info-display img {
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+/* span.state-display {
+  ;
+} */
+
+span.state-display img {
+  width: 50px;
+  height: 50px;
+}
+
+#password-form {
+  font-family: Montserrat;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+
+#psw-title {
+  font-size: 18px;
+}
+
+#psw-status {
+  font-size: 15px;
+}
+
+/* Remove arrows that appear inside the number input */
+#password-form input::-webkit-outer-spin-button,
+#password-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  /* Firefox, not sure if this line works */
+  -moz-appearance: textfield;
+  margin: 0;
+}
+
+#psw-input {
+  border: none;
+  background-color: rgba(0,0,0,0);
+  padding: 5px;
+}
+
+#psw-input:focus {
+  outline: none;
+}
+
+/* #display-wrapper {
+
+} */
+
+#input-display {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+}
+
+.display-digit {
+  width: 5px;
+  height: 5px;
+  background-color: #999;
+  border-radius: 50%;
+  margin: 5px 3px;
+}
+
+.passed-digit {
+  background-color: #7140AD;
+}
+
+.current-digit {
+  background-color: #7140AD;
+  transform: scale(2);
+}
