@@ -1,24 +1,25 @@
 <!doctype html>
 
 <html lang="en">
-<head>
-  <meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
-  <meta charset="utf-8">
-  <title>Hadzi-Idrizova 12</title>
-  <link rel="stylesheet" href="index.css">
-</head>
+  <head>
+    <meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+    <meta charset="utf-8">
+    <title>Hadzi-Idrizova 12</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
 
-<body onload="renderInputDisplay()">
-  <form id="password-form" onsubmit="javascript: event.preventDefault()">
-    <span id="psw-title">Upisite hadzi-sifru</span>
-    <span id='psw-status'></span>
-    <div id='display-wrapper'>
-      <div id="input-display">
+  <body onload="renderInputDisplay()">
+    <form id="password-form" onsubmit="javascript: event.preventDefault()">
+      <span id="psw-title">Upisite hadzi-sifru</span>
+      <span id='psw-status'></span>
+      <div id='display-wrapper'>
+        <div id="input-display">
+        </div>
+        <input oninput="handleInput(this)" autofocus type="number" maxlength="6" name="pswInput" id="psw-input">
       </div>
-      <input oninput="handleInput(this)" autofocus type="number" maxlength="6" name="pswInput" id="psw-input">
-    </div>
-  </form>
+    </form>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
