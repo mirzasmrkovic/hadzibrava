@@ -4,15 +4,15 @@ import HIButton from './Buttons'
 
 const Input = ({ val, setValue }) => {
   const APIPath = process.env.REACT_APP_API || 'http://localhost:4000/'
-  const handleSubmit = async setValue => {
-    axios.defaults.headers.post['psw'] = val
-    const endpoint = '/auth'
+  const handleSubmit = (currentVal, setValue) => {
+    axios.defaults.headers.post['psw'] = currentVal
+    const endpoint = 'auth'
     axios
       .post(APIPath + endpoint)
       .then(res => {
         // Remove the password input on correct psw input
-        const passwordForm = document.getElementById('password-form')
-        passwordForm.parentNode.removeChild(passwordForm)
+        // const passwordForm = document.getElementById('password-form')
+        // passwordForm.parentNode.removeChild(passwordForm)
 
         // Show buttons after removing
         const buttons = res.data.buttons
@@ -28,10 +28,12 @@ const Input = ({ val, setValue }) => {
     <input
       value={val}
       onChange={e => {
-        // console.log(e.target.value)
-        setValue(e.target.value)
+        const currentVal = e.target.value
+        setValue(currentVal)
         const maxLength = e.target.maxLength
-        if (val.length + 1 === maxLength) handleSubmit(setValue)
+        if (currentVal.length === maxLength) {
+          handleSubmit(currentVal, setValue)
+        }
       }}
       autoFocus
       type="number"
