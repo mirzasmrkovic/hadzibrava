@@ -1,7 +1,6 @@
 import React from 'react'
 
 const InputDisplay = ({ currentLength }) => {
-  console.log('currentLength ' + currentLength)
   const decideClass = index => {
     if (index === currentLength) return ' current-digit'
     else if (index < currentLength) return ' passed-digit'
