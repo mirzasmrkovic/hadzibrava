@@ -78,8 +78,8 @@ const loadButton = opts => {
   btn.appendChild(infoDisplay)
 
   const img = document.createElement('img')
-  img.src = `/icons/${opts.imgPath}.svg`
-  img.alt = opts.imgPath
+  img.src = `/icons/${opts.name}.svg`
+  img.alt = opts.descText
 
   const title = document.createElement('p')
   title.innerHTML = opts.titleText
