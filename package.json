@@ -20,6 +20,8 @@
   },
   "scripts": {
     "server": "nodemon -r esm server/server.js",
+    "frontend": "cd brava-fe/ && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn frontend\"",
     "start": "node -r esm server/server.js"
   }
 }
