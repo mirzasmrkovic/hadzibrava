@@ -63,7 +63,6 @@ const handleClick = async e => {
 }
 
 const loadButton = opts => {
-  console.log(opts.path)
   const body = document.body
   const btn = document.createElement('button')
   btn.className = 'links'
