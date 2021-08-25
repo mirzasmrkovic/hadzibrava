@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&display=swap');
 
 body {
+  background-color: #000;
+}
+
+#root {
   display: flex;
   flex-direction: column;
-  background-color: #000;
 }
 
 .links {
