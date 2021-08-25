@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
 
-const Btn = props => {
-  const [loading, setLoading] = useState()
-  const [success, setSuccess] = useState()
-  const [fail, setFail] = useState()
-
+const Btn = ({ handleButtonsState, buttonsState, ...props }) => {
+  // ButtonState:  [...[0: loading, 1: success, 2: fail]]
   const handleClick = () => {
-    if (loading) return
+    if (buttonsState[props.index][0]) return
     else {
-      setLoading(true)
-      setFail(false)
-      setSuccess(false)
+      handleButtonsState(props.index, 0)
     }
 
     const timeout = 4000
@@ -33,13 +28,10 @@ const Btn = props => {
       },
     })
       .then(() => {
-        setLoading(false)
-        setSuccess(true)
+        handleButtonsState(props.index, 1)
       })
       .catch(e => {
-        setLoading(false)
-        setSuccess(false)
-        setFail(true)
+        handleButtonsState(props.index, 2)
       })
   }
   return (
@@ -50,9 +42,15 @@ const Btn = props => {
         <h3>{props.descText}</h3>
       </span>
       <span className="state-display">
-        {loading && <img alt="loading" src="./icons/loader.svg" />}
-        {success && <img alt="success" src="./icons/success.svg" />}
-        {fail && <img alt="failed" src="./icons/fail.svg" />}
+        {buttonsState[props.index][0] && (
+          <img alt="loading" src="./icons/loader.svg" />
+        )}
+        {buttonsState[props.index][1] && (
+          <img alt="success" src="./icons/success.svg" />
+        )}
+        {buttonsState[props.index][2] && (
+          <img alt="failed" src="./icons/fail.svg" />
+        )}
       </span>
     </button>
   )
@@ -61,7 +59,33 @@ const Btn = props => {
 const Buttons = () => {
   const history = useHistory()
   const location = useLocation()
-  if (!location.state) history.push('/')
+  useEffect(() => {
+    if (!location.state) history.push('/')
+  }, [location, history])
+
+  const [buttonsState, setButtonState] = useState([
+    // [0: loading, 1: success, 2: fail]
+    [false, false, false],
+    [false, false, false],
+    [false, false, false],
+  ])
+
+  const handleButtonsState = (index, state) => {
+    setButtonState(
+      buttonsState.map((btnElem, i) => {
+        if (i !== index) {
+          return btnElem.map(() => {
+            return false
+          })
+        } else {
+          return btnElem.map((stElem, j) => {
+            if (state === j) return true
+            else return false
+          })
+        }
+      })
+    )
+  }
   return (
     <>
       {location.state?.buttons &&
@@ -74,6 +98,9 @@ const Buttons = () => {
               btnID={element.btnID}
               path={element.path}
               key={i}
+              index={i}
+              handleButtonsState={handleButtonsState}
+              buttonsState={buttonsState}
               password={location.state.password}
             />
           )
