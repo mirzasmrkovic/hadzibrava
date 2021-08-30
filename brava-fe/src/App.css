@@ -106,6 +106,9 @@ span.state-display img {
 }
 
 #psw-input {
+  position: absolute;
+  top: 0;
+  left: -38px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   padding: 5px;
@@ -115,9 +118,10 @@ span.state-display img {
   outline: none;
 }
 
-/* #display-wrapper {
-
-} */
+#display-wrapper {
+  position: relative;
+  display: inline-block;
+}
 
 #input-display {
   display: flex;
