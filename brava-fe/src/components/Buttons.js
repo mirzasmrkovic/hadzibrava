@@ -57,11 +57,11 @@ const Btn = ({ handleButtonsState, buttonsState, ...props }) => {
 }
 
 const Buttons = () => {
-  const history = useHistory()
+  // const history = useHistory()
   const location = useLocation()
-  useEffect(() => {
-    if (!location.state) history.push('/')
-  }, [location, history])
+  // useEffect(() => {
+  //   if (!location.state) history.push('/')
+  // }, [location, history])
 
   const [buttonsState, setButtonState] = useState([
     // [0: loading, 1: success, 2: fail]

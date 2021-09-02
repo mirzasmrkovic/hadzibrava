@@ -12,25 +12,25 @@ module.exports.auth = async event => {
 }
 
 module.exports.open = async event => {
-  setTimeout(() => {
-    return {
-      status: 200,
-    }
-  }, 2000)
+  return await new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ statusCode: 200 })
+    }, 2000)
+  })
 }
 
 module.exports.close = async event => {
-  setTimeout(() => {
-    return {
-      status: 200,
-    }
-  }, 2000)
+  return await new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ statusCode: 200 })
+    }, 2000)
+  })
 }
 
 module.exports.intercom = async event => {
-  setTimeout(() => {
-    return {
-      status: 403,
-    }
-  }, 2000)
+  return await new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ statusCode: 403 })
+    }, 2000)
+  })
 }
