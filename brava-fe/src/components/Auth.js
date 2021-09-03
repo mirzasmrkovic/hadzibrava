@@ -14,14 +14,14 @@ const Auth = () => {
       method: 'post',
       url: endpoint,
       baseURL: APIPath,
-      headers: { psw: currentVal },
+      // headers: { psw: currentVal },
     })
       .then(res => {
         history.push({
           pathname: '/buttons',
           state: {
             buttons: res.data.buttons,
-            password: currentVal,
+            // password: currentVal,
           },
         })
       })
