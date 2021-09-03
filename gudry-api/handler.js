@@ -2,19 +2,28 @@
 
 module.exports.auth = async event => {
   const { buttons } = require('./buttons.json')
-  const response = {
+  return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Request-Headers': 'content-type,psw',
+    },
     body: JSON.stringify({
       buttons: [...buttons],
     }),
   }
-  return response
 }
 
 module.exports.open = async event => {
   return await new Promise(resolve => {
     setTimeout(() => {
-      resolve({ statusCode: 200 })
+      resolve({
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Request-Headers': 'content-type,psw',
+        },
+      })
     }, 2000)
   })
 }
@@ -22,7 +31,13 @@ module.exports.open = async event => {
 module.exports.close = async event => {
   return await new Promise(resolve => {
     setTimeout(() => {
-      resolve({ statusCode: 200 })
+      resolve({
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Request-Headers': 'content-type,psw',
+        },
+      })
     }, 2000)
   })
 }
@@ -30,7 +45,13 @@ module.exports.close = async event => {
 module.exports.intercom = async event => {
   return await new Promise(resolve => {
     setTimeout(() => {
-      resolve({ statusCode: 403 })
+      resolve({
+        statusCode: 403,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Request-Headers': 'content-type,psw',
+        },
+      })
     }, 2000)
   })
 }
