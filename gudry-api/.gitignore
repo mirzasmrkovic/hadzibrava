@@ -8,3 +8,4 @@ jspm_packages
 # Secrets
 secrets.json
 serverless-production.yml
+handler-production.js
