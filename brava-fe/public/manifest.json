@@ -3,8 +3,9 @@
   "name": "Hadzibrava",
   "icons": [
     {
-      "src": "icons/fes-white.svg",
-      "type": "image/svg+xml"
+      "src": "favicon.ico",
+      "sizes": "128x128",
+      "type": "image/x-icon"
     }
   ],
   "start_url": ".",
