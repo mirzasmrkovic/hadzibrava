@@ -2,7 +2,7 @@
   "buttons": [
     {
       "name": "fes",
-      "titleText": "Otklučaj Hadzi-Bravu",
+      "titleText": "Otključaj Hadzi-Bravu",
       "descText": "Otvara interfon i ulazna vrata",
       "btnID": "open-door",
       "path": "/open"
