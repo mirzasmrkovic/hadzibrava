@@ -1,0 +1,12 @@
+# package directories
+node_modules
+jspm_packages
+yarn-error.log
+
+# Serverless directories
+.serverless
+
+# Secrets
+secrets.json
+serverless-production.yml
+handler-production.js
