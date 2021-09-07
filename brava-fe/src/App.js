@@ -6,6 +6,9 @@ import Buttons from './components/Buttons.js'
 const App = () => {
   return (
     <Router>
+      <div id="password-form">
+        <span id="psw-title">Hadzibrava</span>
+      </div>
       <Switch>
         <Route exact path="/">
           <Auth />
