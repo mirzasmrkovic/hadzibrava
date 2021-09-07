@@ -7,6 +7,7 @@ const Auth = () => {
   }
   return (
     <GoogleLogin
+      redirectUri="https://www.dev.hadzibrava.gudry.gg"
       clientId="99445133255-ger1ms05fsktnqshqvkdej19trra053j.apps.googleusercontent.com"
       buttonText="Login"
       onSuccess={responseGoogle}
