@@ -9,3 +9,4 @@ jspm_packages
 secrets.json
 serverless-production.yml
 handler-production.js
+client_secret*.json
