@@ -32,8 +32,13 @@ provider:
   stage: dev
   environment:
     API_PASSWORD: ${self:custom.secrets.API_PASSWORD}
-    API_HOST: ${self:custom.secrets.API_HOST}
     API_ENDPOINT: ${self:custom.secrets.API_ENDPOINT}
+    API_HOST: ${self:custom.secrets.API_HOST}
+    MONGO_URI: ${self:custom.secrets.MONGO_URI}
+    CREDENTIAL_CLIENT_ID: ${self:custom.secrets.CREDENTIAL_CLIENT_ID}
+    CREDENTIAL_CLIENT_SECRET: ${self:custom.secrets.CREDENTIAL_CLIENT_SECRET}
+    # DEV_OAUTH_ID: ${self:custom.secrets.DEV_OAUTH_ID}
+    # DEV_OAUTH_CLIENT: ${self:custom.secrets.DEV_OAUTH_CLIENT}
   # region: eu-central-1
 
   # you can add statements to the Lambda function's IAM Role here
@@ -66,7 +71,7 @@ provider:
 
 functions:
   open:
-    handler: handler.open
+    handler: src/handler.open
     events:
       - http:
           path: /open
@@ -77,7 +82,7 @@ functions:
               - content-type
               - psw
   close:
-    handler: handler.close
+    handler: src/handler.close
     events:
       - http:
           path: /close
@@ -88,7 +93,7 @@ functions:
               - content-type
               - psw
   intercom:
-    handler: handler.intercom
+    handler: src/handler.intercom
     events:
       - http:
           path: /intercom
@@ -98,6 +103,58 @@ functions:
             headers:
               - content-type
               - psw
+  clientID:
+    handler: src/utils/oauth.clientID
+    events:
+      - http:
+          path: /clientID
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - content-type
+              - psw
+  handleOAuth2:
+    handler: src/utils/oauth.handleOAuth2
+    events:
+      - http:
+          path: /oauth2callback
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - content-type
+              - psw
+  getAllUsers:
+    handler: src/resources/user/userHandler.getAll
+    events:
+      - http:
+          path: /user/getAll
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - content-type
+  getOneUser:
+    handler: src/resources/user/userHandler.getOne
+    events:
+      - http:
+          path: /user/getOne
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - content-type
+  createUser:
+    handler: src/resources/user/userHandler.create
+    events:
+      - http:
+          path: /user/create
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - content-type
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

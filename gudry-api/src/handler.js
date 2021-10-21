@@ -1,7 +1,20 @@
 'use strict'
 
 module.exports.auth = async event => {
-  const { buttons } = require('./buttons.json')
+  axios({
+    method: 'POST',
+  })
+  return {
+    statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Request-Headers': 'content-type,psw',
+    },
+  }
+}
+
+module.exports.buttons = async event => {
+  const { buttons } = require('../buttons.json')
   return {
     statusCode: 200,
     headers: {
