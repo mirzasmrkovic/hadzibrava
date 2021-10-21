@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "mongoose": "^6.0.11"
   },
   "devDependencies": {
     "serverless-domain-manager": "^5.1.5"
