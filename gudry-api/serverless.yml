@@ -104,7 +104,7 @@ functions:
               - content-type
               - psw
   clientID:
-    handler: src/utils/oauth.clientID
+    handler: src/utils/auth.clientID
     events:
       - http:
           path: /clientID
@@ -115,7 +115,7 @@ functions:
               - content-type
               - psw
   handleOAuth2:
-    handler: src/utils/oauth.handleOAuth2
+    handler: src/utils/auth.handleOAuth2
     events:
       - http:
           path: /oauth2callback
