@@ -42,12 +42,18 @@ module.exports.getAll = async (event, context) => {
 // user/create
 module.exports.create = async (event, context) => {
   const response = {}
+  const body = JSON.parse(event.body)
   context.callbackWaitsForEmptyEventLoop = false
+  const userCreationSecret = body.userCreationSecret
+  if (userCreationSecret !== process.env.CREATE_USER_SECRET) {
+    response.statusCode = 403
+    response.error = 'Incorrect password'
+    return response
+  }
 
   try {
     await connect()
-    console.log(event.body)
-    const user = await controllers.createOne(JSON.parse(event.body))
+    const user = await controllers.createOne(body)
     response.statusCode = 201
     response.body = JSON.stringify({ data: user })
   } catch (error) {

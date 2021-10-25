@@ -37,6 +37,7 @@ provider:
     MONGO_URI: ${self:custom.secrets.MONGO_URI}
     CREDENTIAL_CLIENT_ID: ${self:custom.secrets.CREDENTIAL_CLIENT_ID}
     CREDENTIAL_CLIENT_SECRET: ${self:custom.secrets.CREDENTIAL_CLIENT_SECRET}
+    CREATE_USER_SECRET: ${self:custom.secrets.CREATE_USER_SECRET}
     # DEV_OAUTH_ID: ${self:custom.secrets.DEV_OAUTH_ID}
     # DEV_OAUTH_CLIENT: ${self:custom.secrets.DEV_OAUTH_CLIENT}
   # region: eu-central-1
@@ -155,6 +156,7 @@ functions:
             origin: '*'
             headers:
               - content-type
+              - userCreationSecret
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
