@@ -6,7 +6,7 @@ const Auth = () => {
   const responseGoogle = response => {
     const email = response.profileObj.email
     const name = response.profileObj.name
-    const googleID = response.profileObj.googleID
+    const googleID = response.profileObj.googleId
     const token = response.tokenObj.id_token
     axios({
       method: 'post',
@@ -18,6 +18,7 @@ const Auth = () => {
         googleID: googleID,
       },
       headers: {
+        'Content-Type': 'application/json',
         Authorization: token,
       },
     })
