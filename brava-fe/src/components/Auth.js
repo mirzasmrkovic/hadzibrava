@@ -21,6 +21,7 @@ const Auth = () => {
         Authorization: token,
       },
     })
+    console.log(response)
     console.log({ email, name, googleID, token })
   }
   return (
