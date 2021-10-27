@@ -1,9 +1,27 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
+import axios from 'axios'
 
 const Auth = () => {
   const responseGoogle = response => {
-    console.log(response)
+    const email = response.profileObj.email
+    const name = response.profileObj.name
+    const googleID = response.profileObj.googleID
+    const token = response.tokenObj.id_token
+    axios({
+      method: 'post',
+      url: 'login',
+      baseURL: process.env.REACT_APP_API,
+      data: {
+        email: email,
+        name: name,
+        googleID: googleID,
+      },
+      headers: {
+        Authorization: token,
+      },
+    })
+    console.log({ email, name, googleID, token })
   }
   return (
     <GoogleLogin
