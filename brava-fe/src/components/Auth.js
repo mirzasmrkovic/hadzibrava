@@ -4,26 +4,20 @@ import axios from 'axios'
 
 const Auth = () => {
   const responseGoogle = response => {
-    const email = response.profileObj.email
-    const name = response.profileObj.name
-    const googleID = response.profileObj.googleId
+    // const email = response.profileObj.email
+    // const name = response.profileObj.name
+    // const googleID = response.profileObj.googleId
     const token = response.tokenObj.id_token
     axios({
       method: 'post',
       url: 'login',
       baseURL: process.env.REACT_APP_API,
-      data: {
-        email: email,
-        name: name,
-        googleID: googleID,
-      },
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        'Authorization': token,
       },
     })
     console.log(response)
-    console.log({ email, name, googleID, token })
   }
   return (
     <GoogleLogin
