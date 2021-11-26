@@ -63,3 +63,41 @@ module.exports.create = async (event, context) => {
 
   return response
 }
+
+module.exports.login = async (event, context) => {
+  const { verify } = require('../../utils/auth')
+  const response = {}
+  response.headers = { 'Access-Control-Allow-Origin': '*' }
+  context.callbackWaitsForEmptyEventLoop = false
+  const token = event.headers.Authorization
+  let payload
+  try {
+    payload = await verify(token)
+    if (!payload) {
+      response.statusCode = 401
+      return response
+    }
+  } catch (error) {
+    console.error(error)
+    response.statusCode = 500
+    response.body = error
+    return response
+  }
+
+  try {
+    await connect()
+    const query = { email: payload.email }
+    const user = await controllers.getOne(query)
+    if (!user) {
+      response.statusCode = 401
+      return response
+    }
+    response.statusCode = 200
+    return response
+  } catch (error) {
+    console.error(error)
+    response.statusCode = 500
+    return response
+  }
+  return response
+}

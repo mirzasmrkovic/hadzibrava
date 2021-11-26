@@ -126,6 +126,16 @@ functions:
             headers:
               - content-type
               - psw
+  verify:
+    handler: src/utils/auth.verify
+    events:
+      - http:
+          path: /verify
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - content-type
   getAllUsers:
     handler: src/resources/user/userHandler.getAll
     events:
@@ -157,6 +167,13 @@ functions:
             headers:
               - content-type
               - userCreationSecret
+  login:
+    handler: src/resources/user/userHandler.login
+    events:
+      - http:
+          path: /login
+          method: post
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

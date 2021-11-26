@@ -7,6 +7,7 @@ const axios = require('axios')
 const clientId = process.env.CREDENTIAL_CLIENT_ID
 const clientSecret = process.env.CREDENTIAL_CLIENT_SECRET
 
+// /clientID
 module.exports.clientID = async event => {
   return {
     statusCode: 200,
@@ -18,12 +19,13 @@ module.exports.clientID = async event => {
   }
 }
 
+// /oauth2callback
 module.exports.handleOAuth2 = async event => {
   const tokenResponse = await axios({
     method: 'POST',
     url: 'https://www.googleapis.com/oauth2/v4/token',
     body: JSON.stringify({
-      code: req.query.code,
+      // code: req.query.code,
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: 'https://www.dev.hadzibrava.gudry.gg/oauth2callback',
@@ -33,11 +35,11 @@ module.exports.handleOAuth2 = async event => {
   const tokenJson = await tokenResponse.json()
   const userInfo = await getUserInfo(tokenJson.access_token)
 
-  res.redirect(
-    `https://www.dev.hadzibrava.gudry.gg?${Object.keys(userInfo)
-      .map(key => `${key}=${encodeURIComponent(userInfo[key])}`)
-      .join('&')}`
-  )
+  // res.redirect(
+  //   `https://www.dev.hadzibrava.gudry.gg?${Object.keys(userInfo)
+  //     .map(key => `${key}=${encodeURIComponent(userInfo[key])}`)
+  //     .join('&')}`
+  // )
   return {
     statusCode: 200,
     body: JSON.stringify({ clientId }),
@@ -58,4 +60,17 @@ async function getUserInfo(accessToken) {
   })
   const json = await response.json()
   return json
+}
+
+module.exports.verify = async token => {
+  const { OAuth2Client } = require('google-auth-library')
+  const client = new OAuth2Client(clientId, clientSecret)
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: clientId,
+  })
+  const payload = ticket.getPayload()
+  console.log(payload)
+  return payload
+  const userid = payload['sub']
 }

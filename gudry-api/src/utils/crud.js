@@ -36,7 +36,7 @@ const createOne = model => async body => {
 module.exports.createOne = createOne
 
 // Update
-const updateOne = model => async request => {
+const updateByID = model => async request => {
   try {
     const updatedDocs = await model
       .findByIdAndUpdate(
@@ -53,7 +53,7 @@ const updateOne = model => async request => {
     return error
   }
 }
-module.exports.updateOne = updateOne
+module.exports.updateByID = updateByID
 
 // Delete
 const removeOne = model => async request => {
@@ -76,6 +76,6 @@ module.exports.crud = model => ({
   getOne: getOne(model),
   getAll: getAll(model),
   createOne: createOne(model),
-  updateOne: updateOne(model),
+  updateByID: updateByID(model),
   removeOne: removeOne(model),
 })
